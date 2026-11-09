@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameArena</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0 20px 40px;
+            color: #222;
+        }
+        header {
+            background-color: #2b2d42;
+            color: white;
+            padding: 15px 20px;
+            margin: 0 -20px 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #2b2d42;
+        }
+        form {
+            margin-bottom: 15px;
+        }
+        input, select {
+            padding: 6px;
+            margin: 4px 4px 4px 0;
+        }
+        button {
+            padding: 6px 12px;
+            margin: 2px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4361ee;
+            color: white;
+            cursor: pointer;
+        }
+        button.borrar {
+            background-color: #d90429;
+        }
+        button.secundario {
+            background-color: #8d99ae;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px;
+            text-align: left;
+        }
+        th {
+            background-color: #edf2f4;
+        }
+        #mensaje {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+        .ok {
+            background-color: #d8f3dc;
+            color: #1b4332;
+        }
+        .error {
+            background-color: #ffd6d6;
+            color: #8b0000;
+        }
+        .resultado {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>GameArena</h1>
+    <p>Gestión de torneos de videojuegos</p>
+</header>
+
+<div id="mensaje"></div>
+
+<!-- ===================== VIDEOJUEGOS ===================== -->
+<section>
+    <h2>Videojuegos</h2>
+    <form id="formVideojuego">
+        <input type="text" id="videojuegoNombre" placeholder="Nombre" required>
+        <input type="text" id="videojuegoGenero" placeholder="Género" required>
+        <button type="submit">Crear videojuego</button>
+    </form>
+    <table>
+        <thead>
+        <tr><th>Id</th><th>Nombre</th><th>Género</th></tr>
+        </thead>
+        <tbody id="tablaVideojuegos"></tbody>
+    </table>
+</section>
+
+<!-- ===================== JUGADORES ===================== -->
+<section>
+    <h2>Jugadores</h2>
+    <form id="formJugador">
+        <input type="hidden" id="jugadorId">
+        <input type="text" id="jugadorNick" placeholder="Nick" required>
+        <input type="email" id="jugadorEmail" placeholder="Email" required>
+        <input type="number" id="jugadorNivel" placeholder="Nivel" min="1" required>
+        <button type="submit" id="botonJugador">Crear jugador</button>
+        <button type="button" class="secundario" id="cancelarJugador">Cancelar</button>
+    </form>
+    <table>
+        <thead>
+        <tr><th>Id</th><th>Nick</th><th>Email</th><th>Nivel</th><th>Acciones</th></tr>
+        </thead>
+        <tbody id="tablaJugadores"></tbody>
+    </table>
+    <div id="participacionesJugador" class="resultado"></div>
+</section>
+
+<!-- ===================== TORNEOS ===================== -->
+<section>
+    <h2>Torneos</h2>
+    <form id="formTorneo">
+        <input type="hidden" id="torneoId">
+        <input type="text" id="torneoNombre" placeholder="Nombre" required>
+        <input type="date" id="torneoFecha" required>
+        <input type="number" id="torneoPremio" placeholder="Premio (€)" step="0.01" min="0" required>
+        <select id="torneoEstado">
+            <option value="ABIERTO">ABIERTO</option>
+            <option value="EN_CURSO">EN_CURSO</option>
+            <option value="FINALIZADO">FINALIZADO</option>
+        </select>
+        <select id="torneoVideojuego"></select>
+        <button type="submit" id="botonTorneo">Crear torneo</button>
+        <button type="button" class="secundario" id="cancelarTorneo">Cancelar</button>
+    </form>
+
+    <h3>Buscar torneos</h3>
+    <select id="filtroVideojuego">
+        <option value="">Todos los videojuegos</option>
+    </select>
+    <select id="filtroEstado">
+        <option value="">Todos los estados</option>
+        <option value="ABIERTO">ABIERTO</option>
+        <option value="EN_CURSO">EN_CURSO</option>
+        <option value="FINALIZADO">FINALIZADO</option>
+    </select>
+    <button type="button" id="botonFiltrar">Buscar</button>
+
+    <table>
+        <thead>
+        <tr><th>Id</th><th>Nombre</th><th>Fecha</th><th>Premio</th><th>Estado</th><th>Videojuego</th><th>Acciones</th></tr>
+        </thead>
+        <tbody id="tablaTorneos"></tbody>
+    </table>
+    <div id="participantesTorneo" class="resultado"></div>
+</section>
+
+<!-- ===================== PARTICIPACIONES ===================== -->
+<section>
+    <h2>Participaciones</h2>
+    <form id="formParticipacion">
+        <select id="participacionJugador"></select>
+        <select id="participacionTorneo"></select>
+        <input type="number" id="participacionPuntos" placeholder="Puntos" min="0" required>
+        <input type="number" id="participacionPosicion" placeholder="Posición" min="0" required>
+        <button type="submit">Inscribir jugador</button>
+    </form>
+    <table>
+        <thead>
+        <tr><th>Id</th><th>Jugador</th><th>Torneo</th><th>Puntos</th><th>Posición</th></tr>
+        </thead>
+        <tbody id="tablaParticipaciones"></tbody>
+    </table>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
