@@ -1,0 +1,2126 @@
+{
+  "info": {
+    "name": "GameArena - Pruebas API REST",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Pruebas completas de la API GameArena. Ejecutar en orden con la base de datos vacía (borrar la carpeta data si ya existe)."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Crear videojuegos",
+      "item": [
+        {
+          "name": "Crear videojuego 1: Valorant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/videojuegos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videojuegos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Valorant\",\n  \"genero\": \"Shooter táctico\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 1\", function () { pm.expect(pm.response.json().id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear videojuego 2: League of Legends",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/videojuegos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videojuegos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"League of Legends\",\n  \"genero\": \"MOBA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 2\", function () { pm.expect(pm.response.json().id).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear videojuego 3: Rocket League",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/videojuegos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videojuegos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Rocket League\",\n  \"genero\": \"Deportes\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 3\", function () { pm.expect(pm.response.json().id).to.eql(3); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. Crear jugadores",
+      "item": [
+        {
+          "name": "Crear jugador 1: ShadowAce",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nick\": \"ShadowAce\",\n  \"email\": \"shadowace@gamearena.com\",\n  \"nivel\": 8\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 1\", function () { pm.expect(pm.response.json().id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear jugador 2: NeoFrag",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nick\": \"NeoFrag\",\n  \"email\": \"neofrag@gamearena.com\",\n  \"nivel\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 2\", function () { pm.expect(pm.response.json().id).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear jugador 3: LunaPixel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nick\": \"LunaPixel\",\n  \"email\": \"lunapixel@gamearena.com\",\n  \"nivel\": 7\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 3\", function () { pm.expect(pm.response.json().id).to.eql(3); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear jugador 4: KaiStorm",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nick\": \"KaiStorm\",\n  \"email\": \"kaistorm@gamearena.com\",\n  \"nivel\": 9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 4\", function () { pm.expect(pm.response.json().id).to.eql(4); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear jugador 5: MiaBlaze",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nick\": \"MiaBlaze\",\n  \"email\": \"miablaze@gamearena.com\",\n  \"nivel\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 5\", function () { pm.expect(pm.response.json().id).to.eql(5); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Crear torneos",
+      "item": [
+        {
+          "name": "Crear torneo 1: Valorant Spring Cup",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Valorant Spring Cup\",\n  \"fecha\": \"2026-12-05\",\n  \"premio\": 500.0,\n  \"estado\": \"ABIERTO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 1\", function () { pm.expect(pm.response.json().id).to.eql(1); });",
+                  "pm.test(\"videojuego.id = 1\", function () { pm.expect(pm.response.json().videojuego.id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear torneo 2: Valorant Masters Madrid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Valorant Masters Madrid\",\n  \"fecha\": \"2026-10-10\",\n  \"premio\": 1500.0,\n  \"estado\": \"FINALIZADO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 2\", function () { pm.expect(pm.response.json().id).to.eql(2); });",
+                  "pm.test(\"videojuego.id = 1\", function () { pm.expect(pm.response.json().videojuego.id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear torneo 3: LoL Winter Clash",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "2"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"LoL Winter Clash\",\n  \"fecha\": \"2026-12-12\",\n  \"premio\": 800.0,\n  \"estado\": \"ABIERTO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 3\", function () { pm.expect(pm.response.json().id).to.eql(3); });",
+                  "pm.test(\"videojuego.id = 2\", function () { pm.expect(pm.response.json().videojuego.id).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear torneo 4: LoL Liga Guadalajara",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "2"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"LoL Liga Guadalajara\",\n  \"fecha\": \"2026-11-20\",\n  \"premio\": 1000.0,\n  \"estado\": \"EN_CURSO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 4\", function () { pm.expect(pm.response.json().id).to.eql(4); });",
+                  "pm.test(\"videojuego.id = 2\", function () { pm.expect(pm.response.json().videojuego.id).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear torneo 5: Rocket League Night",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "3"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Rocket League Night\",\n  \"fecha\": \"2026-12-20\",\n  \"premio\": 300.0,\n  \"estado\": \"ABIERTO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 5\", function () { pm.expect(pm.response.json().id).to.eql(5); });",
+                  "pm.test(\"videojuego.id = 3\", function () { pm.expect(pm.response.json().videojuego.id).to.eql(3); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. Inscribir jugadores (participaciones)",
+      "item": [
+        {
+          "name": "Inscribir jugador 1 en torneo 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=1&torneoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "1"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 1\", function () { pm.expect(pm.response.json().id).to.eql(1); });",
+                  "pm.test(\"jugador.id = 1\", function () { pm.expect(pm.response.json().jugador.id).to.eql(1); });",
+                  "pm.test(\"torneo.id = 1\", function () { pm.expect(pm.response.json().torneo.id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 2 en torneo 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=2&torneoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "2"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 2\", function () { pm.expect(pm.response.json().id).to.eql(2); });",
+                  "pm.test(\"jugador.id = 2\", function () { pm.expect(pm.response.json().jugador.id).to.eql(2); });",
+                  "pm.test(\"torneo.id = 1\", function () { pm.expect(pm.response.json().torneo.id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 3 en torneo 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=3&torneoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "3"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 3\", function () { pm.expect(pm.response.json().id).to.eql(3); });",
+                  "pm.test(\"jugador.id = 3\", function () { pm.expect(pm.response.json().jugador.id).to.eql(3); });",
+                  "pm.test(\"torneo.id = 1\", function () { pm.expect(pm.response.json().torneo.id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 1 en torneo 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=1&torneoId=2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "1"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "2"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 30,\n  \"posicion\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 4\", function () { pm.expect(pm.response.json().id).to.eql(4); });",
+                  "pm.test(\"jugador.id = 1\", function () { pm.expect(pm.response.json().jugador.id).to.eql(1); });",
+                  "pm.test(\"torneo.id = 2\", function () { pm.expect(pm.response.json().torneo.id).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 4 en torneo 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=4&torneoId=2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "4"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "2"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 20,\n  \"posicion\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 5\", function () { pm.expect(pm.response.json().id).to.eql(5); });",
+                  "pm.test(\"jugador.id = 4\", function () { pm.expect(pm.response.json().jugador.id).to.eql(4); });",
+                  "pm.test(\"torneo.id = 2\", function () { pm.expect(pm.response.json().torneo.id).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 5 en torneo 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=5&torneoId=2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "5"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "2"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 10,\n  \"posicion\": 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 6\", function () { pm.expect(pm.response.json().id).to.eql(6); });",
+                  "pm.test(\"jugador.id = 5\", function () { pm.expect(pm.response.json().jugador.id).to.eql(5); });",
+                  "pm.test(\"torneo.id = 2\", function () { pm.expect(pm.response.json().torneo.id).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 2 en torneo 3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=2&torneoId=3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "2"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "3"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 7\", function () { pm.expect(pm.response.json().id).to.eql(7); });",
+                  "pm.test(\"jugador.id = 2\", function () { pm.expect(pm.response.json().jugador.id).to.eql(2); });",
+                  "pm.test(\"torneo.id = 3\", function () { pm.expect(pm.response.json().torneo.id).to.eql(3); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 3 en torneo 3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=3&torneoId=3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "3"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "3"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 8\", function () { pm.expect(pm.response.json().id).to.eql(8); });",
+                  "pm.test(\"jugador.id = 3\", function () { pm.expect(pm.response.json().jugador.id).to.eql(3); });",
+                  "pm.test(\"torneo.id = 3\", function () { pm.expect(pm.response.json().torneo.id).to.eql(3); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 4 en torneo 4",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=4&torneoId=4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "4"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "4"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 15,\n  \"posicion\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 9\", function () { pm.expect(pm.response.json().id).to.eql(9); });",
+                  "pm.test(\"jugador.id = 4\", function () { pm.expect(pm.response.json().jugador.id).to.eql(4); });",
+                  "pm.test(\"torneo.id = 4\", function () { pm.expect(pm.response.json().torneo.id).to.eql(4); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 5 en torneo 5",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=5&torneoId=5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "5"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "5"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 10\", function () { pm.expect(pm.response.json().id).to.eql(10); });",
+                  "pm.test(\"jugador.id = 5\", function () { pm.expect(pm.response.json().jugador.id).to.eql(5); });",
+                  "pm.test(\"torneo.id = 5\", function () { pm.expect(pm.response.json().torneo.id).to.eql(5); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5. CRUD jugadores",
+      "item": [
+        {
+          "name": "Listar jugadores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve 5 elementos\", function () { pm.expect(pm.response.json().length).to.eql(5); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Buscar jugador por id (1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores",
+                "1"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"nick = ShadowAce\", function () { pm.expect(pm.response.json().nick).to.eql(\"ShadowAce\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Modificar jugador 3 (sube de nivel)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores",
+                "3"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nick\": \"LunaPixel\",\n  \"email\": \"lunapixel@gamearena.com\",\n  \"nivel\": 8\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"nivel = 8\", function () { pm.expect(pm.response.json().nivel).to.eql(8); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Buscar jugador que no existe (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores/999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores",
+                "999"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 404\", function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear jugador 6 (para borrarlo)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nick\": \"Temporal\",\n  \"email\": \"temporal@gamearena.com\",\n  \"nivel\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 6\", function () { pm.expect(pm.response.json().id).to.eql(6); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 6 en torneo 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=6&torneoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "6"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 11\", function () { pm.expect(pm.response.json().id).to.eql(11); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Eliminar jugador 6 (204, borra también su participación)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores",
+                "6"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 204\", function () { pm.response.to.have.status(204); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Eliminar jugador que no existe (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores",
+                "6"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 404\", function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "6. Videojuegos",
+      "item": [
+        {
+          "name": "Listar videojuegos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/videojuegos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videojuegos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve 3 elementos\", function () { pm.expect(pm.response.json().length).to.eql(3); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Buscar videojuego por id (2)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/videojuegos/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videojuegos",
+                "2"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"nombre = League of Legends\", function () { pm.expect(pm.response.json().nombre).to.eql(\"League of Legends\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Buscar videojuego que no existe (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/videojuegos/999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videojuegos",
+                "999"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 404\", function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "7. CRUD torneos",
+      "item": [
+        {
+          "name": "Listar torneos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/torneos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve 5 elementos\", function () { pm.expect(pm.response.json().length).to.eql(5); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Buscar torneo por id (3)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/torneos/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos",
+                "3"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"nombre = LoL Winter Clash\", function () { pm.expect(pm.response.json().nombre).to.eql(\"LoL Winter Clash\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Modificar torneo 4 (sube el premio)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos/4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos",
+                "4"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"LoL Liga Guadalajara\",\n  \"fecha\": \"2026-11-20\",\n  \"premio\": 1200.0,\n  \"estado\": \"EN_CURSO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"premio = 1200.0\", function () { pm.expect(pm.response.json().premio).to.eql(1200.0); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear torneo con estado no válido (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Error\",\n  \"fecha\": \"2026-12-01\",\n  \"premio\": 10.0,\n  \"estado\": \"CERRADO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear torneo con videojuego que no existe (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=99",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "99"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Error\",\n  \"fecha\": \"2026-12-01\",\n  \"premio\": 10.0,\n  \"estado\": \"ABIERTO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Crear torneo 6 (para borrarlo)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/torneos?videojuegoId=3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos"
+              ],
+              "query": [
+                {
+                  "key": "videojuegoId",
+                  "value": "3"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Torneo temporal\",\n  \"fecha\": \"2026-12-30\",\n  \"premio\": 50.0,\n  \"estado\": \"ABIERTO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 6\", function () { pm.expect(pm.response.json().id).to.eql(6); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir jugador 1 en torneo 6",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=1&torneoId=6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "1"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "6"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"id = 12\", function () { pm.expect(pm.response.json().id).to.eql(12); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Eliminar torneo 6 (204, borra también su participación)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/torneos/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos",
+                "6"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 204\", function () { pm.response.to.have.status(204); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "8. Consultas y relaciones",
+      "item": [
+        {
+          "name": "Torneos por estado ABIERTO",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/torneos/estado/ABIERTO",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos",
+                "estado",
+                "ABIERTO"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Ids correctos [1, 3, 5]\", function () { pm.expect(pm.response.json().map(x => x.id)).to.eql([1, 3, 5]); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Torneos del videojuego 1 (Valorant)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/torneos/videojuego/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos",
+                "videojuego",
+                "1"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Ids correctos [1, 2]\", function () { pm.expect(pm.response.json().map(x => x.id)).to.eql([1, 2]); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CONSULTA COMPUESTA: torneos de Valorant ABIERTOS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/torneos/videojuego/1/estado/ABIERTO",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos",
+                "videojuego",
+                "1",
+                "estado",
+                "ABIERTO"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Ids correctos [1]\", function () { pm.expect(pm.response.json().map(x => x.id)).to.eql([1]); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Participantes del torneo 2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/torneos/2/participantes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "torneos",
+                "2",
+                "participantes"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve 3 elementos\", function () { pm.expect(pm.response.json().length).to.eql(3); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Participaciones del jugador 1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores/1/participaciones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores",
+                "1",
+                "participaciones"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve 2 elementos\", function () { pm.expect(pm.response.json().length).to.eql(2); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Inscribir con jugador que no existe (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones?jugadorId=99&torneoId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ],
+              "query": [
+                {
+                  "key": "jugadorId",
+                  "value": "99"
+                },
+                {
+                  "key": "torneoId",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos\": 0,\n  \"posicion\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Listar todas las participaciones (quedan 10)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/participaciones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "participaciones"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve 10 elementos\", function () { pm.expect(pm.response.json().length).to.eql(10); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "9. Persistencia (tras reiniciar)",
+      "item": [
+        {
+          "name": "Después de reiniciar: los jugadores siguen ahí",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jugadores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jugadores"
+              ]
+            },
+            "description": "Para la prueba de persistencia: parar la aplicación, volver a arrancarla y lanzar solo esta petición."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve 5 elementos\", function () { pm.expect(pm.response.json().length).to.eql(5); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
