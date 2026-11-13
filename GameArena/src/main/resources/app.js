@@ -7,7 +7,7 @@ const API = "http://localhost:8080";
 function mostrarMensaje(texto, esError) {
     const caja = document.getElementById("mensaje");
     caja.textContent = texto;
-    caja.className = esError ? "error" : "ok";
+    caja.className = "alert " + (esError ? "alert-danger" : "alert-success");
     caja.style.display = "block";
     setTimeout(() => caja.style.display = "none", 3000);
 }
@@ -39,7 +39,7 @@ async function cargarVideojuegos() {
     }
     document.getElementById("torneoVideojuego").innerHTML = opciones;
     document.getElementById("filtroVideojuego").innerHTML =
-        `<option value="">Todos los videojuegos</option>` + opciones;
+        `<option value="">Todos</option>` + opciones;
 }
 
 document.getElementById("formVideojuego").addEventListener("submit", async (e) => {
@@ -78,9 +78,9 @@ async function cargarJugadores() {
             <td>${j.email}</td>
             <td>${j.nivel}</td>
             <td>
-                <button onclick="editarJugador(${j.id})">Editar</button>
-                <button class="secundario" onclick="verParticipacionesJugador(${j.id})">Torneos</button>
-                <button class="borrar" onclick="borrarJugador(${j.id})">Borrar</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="verParticipacionesJugador(${j.id})">Torneos</button>
+                <button class="btn btn-sm btn-outline-primary" onclick="editarJugador(${j.id})">Editar</button>
+                <button class="btn btn-sm btn-outline-danger" onclick="borrarJugador(${j.id})">Borrar</button>
             </td>
         </tr>`;
     }
@@ -182,7 +182,7 @@ async function verParticipacionesJugador(id) {
     }
 
     let html = `<h3>Torneos de ${participaciones[0].jugador.nick}</h3>
-        <table><tr><th>Torneo</th><th>Videojuego</th><th>Puntos</th><th>Posición</th></tr>`;
+        <table class="table table-sm table-bordered"><tr><th>Torneo</th><th>Videojuego</th><th>Puntos</th><th>Posición</th></tr>`;
     for (const p of participaciones) {
         html += `<tr>
             <td>${p.torneo.nombre}</td>
@@ -209,9 +209,9 @@ function pintarTorneos(torneos) {
             <td>${t.estado}</td>
             <td>${t.videojuego.nombre}</td>
             <td>
-                <button onclick="editarTorneo(${t.id})">Editar</button>
-                <button class="secundario" onclick="verParticipantes(${t.id})">Participantes</button>
-                <button class="borrar" onclick="borrarTorneo(${t.id})">Borrar</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="verParticipantes(${t.id})">Participantes</button>
+                <button class="btn btn-sm btn-outline-primary" onclick="editarTorneo(${t.id})">Editar</button>
+                <button class="btn btn-sm btn-outline-danger" onclick="borrarTorneo(${t.id})">Borrar</button>
             </td>
         </tr>`;
     }
@@ -351,7 +351,7 @@ async function verParticipantes(id) {
     }
 
     let html = `<h3>Participantes de ${participaciones[0].torneo.nombre}</h3>
-        <table><tr><th>Jugador</th><th>Nivel</th><th>Puntos</th><th>Posición</th></tr>`;
+        <table class="table table-sm table-bordered"><tr><th>Jugador</th><th>Nivel</th><th>Puntos</th><th>Posición</th></tr>`;
     for (const p of participaciones) {
         html += `<tr>
             <td>${p.jugador.nick}</td>
@@ -407,6 +407,23 @@ document.getElementById("formParticipacion").addEventListener("submit", async (e
     } else {
         mostrarMensaje(mensajeError(respuesta.status), true);
     }
+});
+
+// Buscar un torneo por su id: GET /torneos/{id}
+document.getElementById("botonBuscarTorneo").addEventListener("click", async () => {
+    const id = document.getElementById("buscarTorneoId").value.trim();
+    if (id === "") {
+        cargarTorneos();
+        return;
+    }
+    const respuesta = await fetch(API + "/torneos/" + id);
+    if (!respuesta.ok) {
+        mostrarMensaje(mensajeError(respuesta.status), true);
+        pintarTorneos([]);
+        return;
+    }
+    const torneo = await respuesta.json();
+    pintarTorneos([torneo]);
 });
 
 // ===================== AL ABRIR LA PÁGINA =====================
